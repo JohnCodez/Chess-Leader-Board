@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script src="./src/index.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>username logo balance</h1>
+    </header>
+    <main>
+        <img id="player-1-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Flag_of_None_%28square%29.svg/120px-Flag_of_None_%28square%29.svg.png" alt="player-1-image"> 
+        <img id="player-2-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Flag_of_None_%28square%29.svg/120px-Flag_of_None_%28square%29.svg.png" alt="player-2-image"> 
+        <!-- <label for="Player 1">Player 1</label> -->
+        <select name="Player 1" id="choose-player-1" placeholder="Player 1">
+            <option value="" disabled selected>Select Player 1</option>
+        </select>
+        <!-- <h3 id="vs">vs</h3> -->
+        <!-- <label for="Player 2">Player 2</label> -->
+        <select name="Player 2" id="choose-player-2">
+            <option value="" disabled selected>Select Player 2</option>
+        </select>
+    </main>
+    <nav id="leaderboard">
+        <ol id="leader-board-list"></ol>
+    </nav>
+    <footer id="history">
+        <ul>
+            <li>Magnus v Harmon</li>
+            <li>Bobby v Harmon</li>
+            <li>Bobby v Harmon</li>
+            <li>Bobby v Harmon</li>
+            <li>Bobby v Harmon</li>
+        </ul>
+    </footer>
+</body>
+</html>

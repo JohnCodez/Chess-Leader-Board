@@ -1,0 +1,48 @@
+body {
+margin: 0;
+padding: 0;
+display: grid;
+grid-template-areas:
+    "header header"
+    "main nav"
+    "footer nav";
+grid-template-columns: 70% 1fr;
+grid-template-rows: 80px 1fr;
+row-gap: 10px;
+column-gap: 15px;
+}
+
+header {
+grid-area: header;
+border: 2px solid red;
+}
+
+main {
+    grid-area: main;
+    border: 2px solid rgb(0, 165, 27);
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+main img {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+#leader-board-list img {
+    max-height: 70px;
+    max-width: 70px;
+}
+
+nav {
+    grid-area: nav;
+    border: 2px solid rgb(0, 0, 0);
+    font-size: 30px;
+}
+
+footer {
+    grid-area: footer;
+    border: 2px solid blue;
+}
