@@ -17,7 +17,7 @@ grid-area: header;
 border: 2px solid red;
 }
 
-main {
+#gameplay-form {
     grid-area: main;
     border: 2px solid rgb(0, 165, 27);
     height: 600px;
@@ -26,7 +26,7 @@ main {
     justify-content: space-around;
 }
 
-main img {
+#gameplay-form img {
     max-height: 200px;
     max-width: 200px;
 }

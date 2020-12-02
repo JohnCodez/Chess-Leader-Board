@@ -11,21 +11,29 @@
     <header>
         <h1>username logo balance</h1>
     </header>
-    <main>
-        <img id="player-1-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Flag_of_None_%28square%29.svg/120px-Flag_of_None_%28square%29.svg.png" alt="player-1-image"> 
-        <img id="player-2-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Flag_of_None_%28square%29.svg/120px-Flag_of_None_%28square%29.svg.png" alt="player-2-image"> 
-        <!-- <label for="Player 1">Player 1</label> -->
-        <select name="Player 1" id="choose-player-1" placeholder="Player 1">
-            <option value="" disabled selected>Select Player 1</option>
-        </select>
-        <!-- <h3 id="vs">vs</h3> -->
-        <!-- <label for="Player 2">Player 2</label> -->
-        <select name="Player 2" id="choose-player-2">
-            <option value="" disabled selected>Select Player 2</option>
-        </select>
+    <main id="main">
+        <form id="gameplay-form">
+            <img id="player-1-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Flag_of_None_%28square%29.svg/120px-Flag_of_None_%28square%29.svg.png" alt="player-1-image"> 
+            <img id="player-2-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Flag_of_None_%28square%29.svg/120px-Flag_of_None_%28square%29.svg.png" alt="player-2-image"> 
+            <!-- <label for="Player 1">Player 1</label> -->
+            <select name="Player 1" id="choose-player-1" placeholder="Player 1">
+                <option value="" disabled selected>Select Player 1</option>
+            </select>
+            <!-- <h3 id="vs">vs</h3> -->
+            <!-- <label for="Player 2">Player 2</label> -->
+            <select name="Player 2" id="choose-player-2">
+                <option value="" disabled selected>Select Player 2</option>
+            </select>
+            <button id="start-button" type='submit'>Start!</button>
+        </form>
     </main>
     <nav id="leaderboard">
         <ol id="leader-board-list"></ol>
+        <form id='new-player-form'>
+            <input id="name" type='text' placeholder="Name">
+            <input id="image" type='text' placeholder="Image URL">
+            <button type='submit'>Create Player</button>
+        </form>
     </nav>
     <footer id="history">
         <ul>
