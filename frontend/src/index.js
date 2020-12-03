@@ -7,30 +7,36 @@ const player2Img = document.getElementById('player-2-image')
 const leaderBoardList = document.getElementById("leader-board-list")
 const newPlayerForm = document.getElementById('new-player-form')
 const gameplayForm = document.getElementById('gameplay-form')
-
+let status = true
 // Render Functions
 
 const renderPlayers = (playersObj) => {
+    
     playersObj.forEach(player => {
         const li = document.createElement("li")
         li.innerHTML = `         
             <img src=${player.image_url} />
-            ${player.name} (<p id="rank">${player.rank}</p>)
+            ${player.name} (<a id="rank">${player.rank}</a>)
             `
         li.id = player.id 
 
-        leaderBoardList.append(li)
-
+        if (status == true) {
+            leaderBoardList.append(li)
+        }
+        status = true
         const option1 = document.createElement("option")
         option1.value = player.id
         option1.dataset.id = player.rank
-        option1.textContent = `${player.name} (${player.rank})`;
+        
+        // option1.textContent = `${player.name} (${player.rank})`;
+        option1.textContent = `${player.name}`;
         player1.append(option1)
         
         const option2 = document.createElement("option")
         option2.value = player.id
         option2.dataset.id = player.rank
-        option2.textContent = `${player.name} (${player.rank})`;
+        option2.textContent = `${player.name}`;
+        // option2.textContent = `${player.name} (${player.rank})`;
         player2.append(option2)
         
         
@@ -43,14 +49,12 @@ const renderPlayers = (playersObj) => {
             }
         })
         if (event.target.id === 'choose-player-1'){
-            console.log(event.target)
             player1Img.src = img
         } else if (event.target.id === 'choose-player-2') {
-            console.log(event.target)
             player2Img.src = img
         }
     })
-       
+    
 }
 
 const renderNewPlayer = (newPlayerObj) => {
@@ -96,8 +100,9 @@ gameplayForm.addEventListener('submit', (event) => {
             rank: player1Rank + 50
         }  
             updatePlayer(player1Id, playerObj)
-            li = document.getElementById(`${player1Id}`)
-            li.rank = playerObj.rank 
+            let li = document.getElementById(`${player1Id}`)
+            li.childNodes[3].textContent = playerObj.rank
+            
         })
     
     fetch(`http://localhost:3000/players/${player2Id}`)
@@ -108,11 +113,18 @@ gameplayForm.addEventListener('submit', (event) => {
             rank: player2Rank - 50
         }
             updatePlayer(player2Id, playerObj)
+            let li = document.getElementById(`${player2Id}`)
+            li.childNodes[3].textContent = playerObj.rank
+            
         })
 
-        
-
-})
+        // clearOptions('choose-player-1')
+        // clearOptions('choose-player-2')
+        // clearLeaderboard('leader-board-list')
+        // status = false
+        // getPlayers()
+        // gameplayForm.reset()
+    })
 
 
 // random number = (1 or 2)
@@ -155,7 +167,7 @@ const updatePlayer = (id, playerObj) => {
         .then(response => {
             return response.json()
         })
-        .then(console.log)
+        // .then(console.log)
 }
 
 
@@ -165,7 +177,20 @@ function getRandomNumber(min, max) {
     number = Math.round(number)
     return number
   }
-
+  function clearOptions(list){
+    let select = document.getElementById(list)
+    let length = select.options.length
+    for (i = length-1; i >= 0; i--) {
+        select.options[i] = null;
+    }
+  }
+  function clearLeaderboard(leaderboardlist){
+    let ol = document.getElementById(leaderboardlist)
+    let length = ol.children.length
+    for (i = length-1; i >= 0; i--) {
+        ol.children[i] = null;
+    }
+  }
 getPlayers()
 
 
