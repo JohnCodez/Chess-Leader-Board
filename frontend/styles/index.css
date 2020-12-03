@@ -10,20 +10,26 @@ grid-template-columns: 70% 1fr;
 grid-template-rows: 80px 1fr;
 row-gap: 10px;
 column-gap: 15px;
+background-image: url('https://gallery.yopriceville.com/var/resizes/Backgrounds/Light_Wooden_Background.png?m=1555550448');
+}
+
+main {
+    background-image: url("https://images.hdqwalls.com/download/chess-8k-2r-1366x768.jpg");
 }
 
 header {
 grid-area: header;
-border: 2px solid red;
+border: 2px solid rgb(0, 0, 0);
 }
 
 #gameplay-form {
     grid-area: main;
-    border: 2px solid rgb(0, 165, 27);
+    border: 2px solid rgb(0, 0, 0);
     height: 600px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    
 }
 
 #gameplay-form img {
@@ -40,9 +46,11 @@ nav {
     grid-area: nav;
     border: 2px solid rgb(0, 0, 0);
     font-size: 30px;
+    background-image: url('https://images.homedepot-static.com/productImages/96ad63d0-0a5b-4b48-924b-5280a31118a2/svn/brown-with-white-background-interdesign-shower-curtains-36521-64_1000.jpg');
 }
 
 footer {
     grid-area: footer;
-    border: 2px solid blue;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: #cccccc;
 }

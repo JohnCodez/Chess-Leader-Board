@@ -8,6 +8,7 @@ const leaderBoardList = document.getElementById("leader-board-list")
 const newPlayerForm = document.getElementById('new-player-form')
 const gameplayForm = document.getElementById('gameplay-form')
 let status = true
+let winnerId = 0;
 // Render Functions
 
 const renderPlayers = (playersObj) => {
@@ -88,27 +89,71 @@ newPlayerForm.addEventListener('submit', (event) => {
 
 gameplayForm.addEventListener('submit', (event) => {
     event.preventDefault()
+    winner = getRandomNumber(1,2)
     const player1Id = player1.value 
     const player2Id = player2.value 
+    
     
     
     fetch(`http://localhost:3000/players/${player1Id}`)
     .then(response => response.json())
     .then((player1Obj) => {
-        let player1Rank = player1Obj.rank
-        const playerObj = {
-            rank: player1Rank + 50
-        }  
-            updatePlayer(player1Id, playerObj)
-            let li = document.getElementById(`${player1Id}`)
-            li.childNodes[3].textContent = playerObj.rank
-            
-        })
+
+        //1st player
+        if (winner == 1){
+            let player1Rank = player1Obj.rank
+            const playerObj = {
+                rank: player1Rank + 50
+            }  
+                updatePlayer(player1Id, playerObj)
+                let li = document.getElementById(`${player1Id}`)
+                li.childNodes[3].textContent = playerObj.rank
+                winnerId = player1Id
+                const playersIds = [player1Id, player2Id]
+                console.log(winnerId)
+                makeGame(winnerId, playersIds)
+                
+            } else {
+                let player1Rank = player1Obj.rank
+                if (player1Rank >= 50) { 
+                    const playerObj = {
+                        rank: player1Rank - 50
+                    }
+                        updatePlayer(player1Id, playerObj)
+                        let li = document.getElementById(`${player1Id}`)
+                        li.childNodes[3].textContent = playerObj.rank
+                        
+                    } else {
+                        const playerObj = {
+                            rank: 0
+                        }
+                            updatePlayer(player1Id, playerObj)
+                            let li = document.getElementById(`${player1Id}`)
+                            li.childNodes[3].textContent = playerObj.rank
+                    }
+                        }
+        
+        }) 
+        
     
+        //2nd
     fetch(`http://localhost:3000/players/${player2Id}`)
     .then(response => response.json())
     .then((player2Obj) => {
+        if (winner == 2) {
+            let player2Rank = player2Obj.rank
+            const playerObj = {
+                rank: player2Rank + 50
+            }  
+                updatePlayer(player2Id, playerObj)
+                let li = document.getElementById(`${player2Id}`)
+                li.childNodes[3].textContent = playerObj.rank
+                winnerId = player2Id
+                console.log(winnerId)
+                makeGame(winnerId)
+        } else {
         let player2Rank = player2Obj.rank
+       if (player2Rank >= 50) { 
         const playerObj = {
             rank: player2Rank - 50
         }
@@ -116,8 +161,16 @@ gameplayForm.addEventListener('submit', (event) => {
             let li = document.getElementById(`${player2Id}`)
             li.childNodes[3].textContent = playerObj.rank
             
-        })
-
+        } else {
+            const playerObj = {
+                rank: 0
+            }
+                updatePlayer(player2Id, playerObj)
+                let li = document.getElementById(`${player2Id}`)
+                li.childNodes[3].textContent = playerObj.rank
+        }
+    }})
+    
         // clearOptions('choose-player-1')
         // clearOptions('choose-player-2')
         // clearLeaderboard('leader-board-list')
@@ -125,17 +178,6 @@ gameplayForm.addEventListener('submit', (event) => {
         // getPlayers()
         // gameplayForm.reset()
     })
-
-
-// random number = (1 or 2)
-// playersObj.forEach(player){
-//  if (radnom number == 1 && player1.value == player.id) {
-//      player1.rank += 10  
-//      player2.rank -= 10  
-// } else if (radnom number == 2 && player2.value == player.id){
-//      player2.rank += 10  
-//      player1.rank -= 10  
-// }}
 
 // Fetch Functions
 
