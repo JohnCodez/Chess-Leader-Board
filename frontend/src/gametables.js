@@ -1,4 +1,4 @@
-
+const historyUl = document.getElementById('history-list')
 
 
 
@@ -35,6 +35,7 @@ function fetchGames(playersIds){
                     player2_id: playersIds[1]
                 }
                 createGameplayers(gameplayersObj)
+
             })
     }
     getGames()
@@ -50,6 +51,35 @@ const createGameplayers = (gameplayersObj) => {
         .then(response => {
             return response.json()
         })
-        .then(console.log)
+        // .then(console.log)
 
 }
+let getPlayer1;
+let getPlayer2;
+const getPlayer = (id, id2) => {
+    const li = document.createElement('li')
+    fetch(`http://localhost:3000/players/${id}`)
+    .then(response => response.json())
+    .then(player1Obj => {
+        getPlayer1 = player1Obj
+        
+        fetch(`http://localhost:3000/players/${id2}`)
+        .then(response => response.json())
+        .then(player2Obj => {
+            getPlayer2 = player2Obj
+            
+            console.log(getPlayer1)
+            console.log(getPlayer2)
+
+            li.innerHTML = 
+            `<img id="p1" src=${getPlayer1.image_url} /> <a id="p1-name"> ${getPlayer1.name} (${getPlayer1.rank})</a>
+             defeated
+             <a id="p2-name"> (${getPlayer2.rank}) ${getPlayer2.name}</a> <img id="p2" src=${getPlayer2.image_url} />
+            `
+            
+            
+            historyUl.prepend(li)
+        })
+    })
+}
+

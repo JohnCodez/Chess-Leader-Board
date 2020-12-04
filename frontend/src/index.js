@@ -9,6 +9,7 @@ const newPlayerForm = document.getElementById('new-player-form')
 const gameplayForm = document.getElementById('gameplay-form')
 let status = true
 let winnerId = 0;
+const h1Winner = document.getElementById('h1-winner')
 // Render Functions
 
 const renderPlayers = (playersObj) => {
@@ -92,13 +93,11 @@ gameplayForm.addEventListener('submit', (event) => {
     winner = getRandomNumber(1,2)
     const player1Id = player1.value 
     const player2Id = player2.value 
-    
-    
+    const playersIds = [player1Id, player2Id]
     
     fetch(`http://localhost:3000/players/${player1Id}`)
     .then(response => response.json())
     .then((player1Obj) => {
-
         //1st player
         if (winner == 1){
             let player1Rank = player1Obj.rank
@@ -109,10 +108,12 @@ gameplayForm.addEventListener('submit', (event) => {
                 let li = document.getElementById(`${player1Id}`)
                 li.childNodes[3].textContent = playerObj.rank
                 winnerId = player1Id
-                const playersIds = [player1Id, player2Id]
-                console.log(winnerId)
+                h1Winner.textContent = player1Obj.name + ' Wins!'
+                // console.log(winnerId) 
                 makeGame(winnerId, playersIds)
-                
+                // renderHistory(winnerId, playersIds)
+                getPlayer(player1Id, player2Id)
+                          
             } else {
                 let player1Rank = player1Obj.rank
                 if (player1Rank >= 50) { 
@@ -135,7 +136,6 @@ gameplayForm.addEventListener('submit', (event) => {
         
         }) 
         
-    
         //2nd
     fetch(`http://localhost:3000/players/${player2Id}`)
     .then(response => response.json())
@@ -149,8 +149,11 @@ gameplayForm.addEventListener('submit', (event) => {
                 let li = document.getElementById(`${player2Id}`)
                 li.childNodes[3].textContent = playerObj.rank
                 winnerId = player2Id
-                console.log(winnerId)
-                makeGame(winnerId)
+                h1Winner.textContent = player2Obj.name + ' Wins!'
+                // console.log(winnerId)
+                makeGame(winnerId, playersIds)
+                // renderHistory(winnerId, playersIds)
+                getPlayer(player2Id, player1Id)
         } else {
         let player2Rank = player2Obj.rank
        if (player2Rank >= 50) { 
@@ -176,7 +179,7 @@ gameplayForm.addEventListener('submit', (event) => {
         // clearLeaderboard('leader-board-list')
         // status = false
         // getPlayers()
-        // gameplayForm.reset()
+        gameplayForm.reset()
     })
 
 // Fetch Functions

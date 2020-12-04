@@ -11,15 +11,28 @@ grid-template-rows: 80px 1fr;
 row-gap: 10px;
 column-gap: 15px;
 background-image: url('https://gallery.yopriceville.com/var/resizes/Backgrounds/Light_Wooden_Background.png?m=1555550448');
+background-size: 3000px 100px;
 }
 
 main {
-    background-image: url("https://images.hdqwalls.com/download/chess-8k-2r-1366x768.jpg");
+    background-image: url("https://ak.picdn.net/shutterstock/videos/13430837/thumb/1.jpg");
+    background-size: 1100px;
 }
 
 header {
 grid-area: header;
-border: 2px solid rgb(0, 0, 0);
+/* border: 2px solid rgb(0, 0, 0); */
+display: flex;
+
+    
+}
+
+#logo {
+    display: flex;
+    height: 50px;
+    width: 40px;
+    align-content: center;
+    /* justify-content: center; */
 }
 
 #gameplay-form {
@@ -33,24 +46,69 @@ border: 2px solid rgb(0, 0, 0);
 }
 
 #gameplay-form img {
-    max-height: 200px;
-    max-width: 200px;
+    height: 200px;
+    width: 200px;
+    border: 4px solid rgb(0, 0, 0);
+    
 }
 
 #leader-board-list img {
-    max-height: 70px;
-    max-width: 70px;
+    height: 50px;
+    width: 50px;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 nav {
     grid-area: nav;
     border: 2px solid rgb(0, 0, 0);
     font-size: 30px;
-    background-image: url('https://images.homedepot-static.com/productImages/96ad63d0-0a5b-4b48-924b-5280a31118a2/svn/brown-with-white-background-interdesign-shower-curtains-36521-64_1000.jpg');
+    font-weight: 900;
+    background-image: url('https://media.istockphoto.com/photos/cork-board-background-picture-id848498476?k=6&m=848498476&s=612x612&w=0&h=Ij7Dl93T9Oii8ITqA3jC0qZnJeEGjKLLIRduzr45-TA=');
+    background-repeat: no-repeat;
+    background-size: 3000px 1000000px;
 }
 
 footer {
     grid-area: footer;
     border: 2px solid rgb(0, 0, 0);
     background-color: #cccccc;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+footer img {
+    height: 50px;
+    width: 50px;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+#p1 {
+    border: 3px solid rgb(29, 165, 2);
+}
+
+#p2 {
+    border: 3px solid rgb(194, 17, 17);
+}
+
+#p1-name {
+    color: rgb(29, 165, 2);
+}
+
+#p2-name {
+    color: rgb(194, 17, 17);
+}
+
+#h1-winner {
+    color:rgb(29, 165, 2);
+}
+
+#choose-player-1 {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+#choose-player-2 {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
 }
