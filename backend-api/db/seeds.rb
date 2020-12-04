@@ -23,4 +23,4 @@ gameplayer1 = Gameplayer.create!(player1_id: bobby.id, player2_id: magnus.id, ga
 gameplayer2 = Gameplayer.create!(player1_id: bobby.id, player2_id: magnus.id, game_id: game2.id)
 gameplayer3 = Gameplayer.create!(player1_id: beth.id, player2_id: magnus.id, game_id: game3.id)
 
-john = User.create(username: "John")
+john = User.create(username: "John", coins: 20)
