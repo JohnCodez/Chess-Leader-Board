@@ -17,14 +17,15 @@ background-size: 3000px 100px;
 main {
     background-image: url("https://ak.picdn.net/shutterstock/videos/13430837/thumb/1.jpg");
     background-size: 1100px;
+        
 }
 
 header {
-grid-area: header;
-/* border: 2px solid rgb(0, 0, 0); */
-display: flex;
-
-    
+    grid-area: header;
+    /* border: 2px solid rgb(0, 0, 0); */
+    display: flex;
+    justify-content: space-around;
+        
 }
 
 #logo {
@@ -38,11 +39,36 @@ display: flex;
 #gameplay-form {
     grid-area: main;
     border: 2px solid rgb(0, 0, 0);
-    height: 600px;
+    height: 600px;    
+}
+
+#div-winner {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 30px;
+}
+
+#game-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+#player-selects {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
     
+}
+
+#div-start-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
 }
 
 #gameplay-form img {
@@ -99,7 +125,7 @@ footer img {
 }
 
 #h1-winner {
-    color:rgb(29, 165, 2);
+    color:rgb(255, 255, 255);
 }
 
 #choose-player-1 {
@@ -111,4 +137,18 @@ footer img {
     font-size: 20px;
     color: rgb(255, 255, 255);
     background-color: rgb(0, 0, 0);
+}
+
+#coins {
+    width: 20%;
+    padding-left:10px;
+    text-align:center;
+}
+
+#username-new-name {
+    height: 25%;
+}
+
+#existing-users {
+    height: 25%;
 }

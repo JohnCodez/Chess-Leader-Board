@@ -77,7 +77,6 @@ const renderNewPlayer = (newPlayerObj) => {
 newPlayerForm.addEventListener('submit', (event) => {
     event.preventDefault()
     
-    
     const newPlayerObj = {
         name: newPlayerForm.name.value,
         image_url: newPlayerForm.image.value,
@@ -88,17 +87,17 @@ newPlayerForm.addEventListener('submit', (event) => {
     newPlayerForm.reset()
 })
 
-gameplayForm.addEventListener('submit', (event) => {
+gameplayForm.addEventListener('submit', async (event) => {
     event.preventDefault()
     winner = getRandomNumber(1,2)
     const player1Id = player1.value 
     const player2Id = player2.value 
-    const playersIds = [player1Id, player2Id]
     
-    fetch(`http://localhost:3000/players/${player1Id}`)
+    await fetch(`http://localhost:3000/players/${player1Id}`)
     .then(response => response.json())
     .then((player1Obj) => {
         //1st player
+        const playersIds = [player1Id, player2Id]
         if (winner == 1){
             let player1Rank = player1Obj.rank
             const playerObj = {
@@ -109,6 +108,7 @@ gameplayForm.addEventListener('submit', (event) => {
                 li.childNodes[3].textContent = playerObj.rank
                 winnerId = player1Id
                 h1Winner.textContent = player1Obj.name + ' Wins!'
+                h1Winner.style.color = 'green'
                 // console.log(winnerId) 
                 makeGame(winnerId, playersIds)
                 // renderHistory(winnerId, playersIds)
@@ -137,9 +137,10 @@ gameplayForm.addEventListener('submit', (event) => {
         }) 
         
         //2nd
-    fetch(`http://localhost:3000/players/${player2Id}`)
+    await fetch(`http://localhost:3000/players/${player2Id}`)
     .then(response => response.json())
     .then((player2Obj) => {
+        const playersIds = [player1Id, player2Id]
         if (winner == 2) {
             let player2Rank = player2Obj.rank
             const playerObj = {
@@ -150,6 +151,7 @@ gameplayForm.addEventListener('submit', (event) => {
                 li.childNodes[3].textContent = playerObj.rank
                 winnerId = player2Id
                 h1Winner.textContent = player2Obj.name + ' Wins!'
+                h1Winner.style.color = 'green'
                 // console.log(winnerId)
                 makeGame(winnerId, playersIds)
                 // renderHistory(winnerId, playersIds)
