@@ -24,8 +24,20 @@ header {
     grid-area: header;
     /* border: 2px solid rgb(0, 0, 0); */
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
         
+}
+
+#logo {
+    /* margin-left: 100px;
+    margin-right: 100px; */
+    /* display: block; */
+    position: absolute;
+    margin: -1.5% 50%; 
+    left: 0;
+    right: 0;
+    
 }
 
 #logo {

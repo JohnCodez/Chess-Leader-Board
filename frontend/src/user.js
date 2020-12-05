@@ -1,5 +1,5 @@
 const username = document.getElementById('username')
-const existingUser = document.getElementById('existing-users')
+const existingUsers = document.getElementById('existing-users')
 const newUser = document.getElementById('new-user')
 const coins = document.getElementById('coins')
 // let currentUser = null
@@ -11,7 +11,7 @@ const renderUsers = (usersObj) => {
         option.value = user.id 
         option.textContent = user.username
         
-        existingUser.append(option)
+        existingUsers.append(option)
     });
 }
 
@@ -20,9 +20,10 @@ const renderNewUser = (newUserObj) => {
     option.value = newUserObj.id
     option.textContent = newUserObj.username
 
-    existingUser.append(option)
+    existingUsers.append(option)
     newUser.reset()
-
+    getUser(newUserObj.id)
+    existingUsers.selectedIndex = `${existingUsers.length - 1}`
 }
 
 //EventListeners
@@ -39,7 +40,7 @@ newUser.addEventListener("submit", (event) => {
     createUser(newUserObj)
 })
 
-existingUser.addEventListener("change", (event) => {
+existingUsers.addEventListener("change", (event) => {
     event.preventDefault()
 
     getUser(event.target.value)
@@ -66,7 +67,10 @@ const createUser = (newUserObj) => {
     .then(response => {
         return response.json()
     })
-    .then(renderNewUser(newUserObj))
+    .then((createdUserObj) => {
+        renderNewUser(createdUserObj)
+        console.log(createdUserObj)
+    })
 }
 
 const getUser = (id) => {

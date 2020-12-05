@@ -11,15 +11,16 @@
 </head>
 <body>
     <header>
-        <h1><img id="logo" src="https://uxwing.com/wp-content/themes/uxwing/download/24-sport-and-awards/chess-knight.png"></h1>
-        <h1 id="username">username</h1>
         <form id="user-coins">
+            <h2 id="username">Welcome To Chess Wars!</h2>
+            <label for="coins">Coins:</label>
             <input id="coins" type='number' value="0" readonly>
         </form>
-        <select name="Users" id="existing-users">
-            <option value="" disabled selected>Users</option>
-        </select>
+        <h1><img id="logo" src="https://uxwing.com/wp-content/themes/uxwing/download/24-sport-and-awards/chess-knight.png"></h1>
         <form id="new-user">
+            <select name="Users" id="existing-users">
+                <option value="" disabled selected>Users</option>
+            </select>
             <input id="username-new-name" type='text' placeholder="Enter new Username!">
             <button id="new-user-button" type='submit'>Create New User</button>
         </form>

@@ -103,7 +103,7 @@ gameplayForm.addEventListener('submit', async (event) => {
             const playerObj = {
                 rank: player1Rank + 50
             }  
-                updatePlayer(player1Id, playerObj)
+                updatePlayer(player1Id, playerObj, player1Id, player2Id, 1)
                 let li = document.getElementById(`${player1Id}`)
                 li.childNodes[3].textContent = playerObj.rank
                 winnerId = player1Id
@@ -112,7 +112,6 @@ gameplayForm.addEventListener('submit', async (event) => {
                 // console.log(winnerId) 
                 makeGame(winnerId, playersIds)
                 // renderHistory(winnerId, playersIds)
-                getPlayer(player1Id, player2Id)
                           
             } else {
                 let player1Rank = player1Obj.rank
@@ -120,7 +119,7 @@ gameplayForm.addEventListener('submit', async (event) => {
                     const playerObj = {
                         rank: player1Rank - 50
                     }
-                        updatePlayer(player1Id, playerObj)
+                        updatePlayer(player1Id, playerObj, player1Id, player2Id, 0)
                         let li = document.getElementById(`${player1Id}`)
                         li.childNodes[3].textContent = playerObj.rank
                         
@@ -128,7 +127,7 @@ gameplayForm.addEventListener('submit', async (event) => {
                         const playerObj = {
                             rank: 0
                         }
-                            updatePlayer(player1Id, playerObj)
+                            updatePlayer(player1Id, playerObj, player1Id, player2Id, 0)
                             let li = document.getElementById(`${player1Id}`)
                             li.childNodes[3].textContent = playerObj.rank
                     }
@@ -146,7 +145,7 @@ gameplayForm.addEventListener('submit', async (event) => {
             const playerObj = {
                 rank: player2Rank + 50
             }  
-                updatePlayer(player2Id, playerObj)
+                updatePlayer(player2Id, playerObj, player1Id, player2Id, 1)
                 let li = document.getElementById(`${player2Id}`)
                 li.childNodes[3].textContent = playerObj.rank
                 winnerId = player2Id
@@ -155,14 +154,14 @@ gameplayForm.addEventListener('submit', async (event) => {
                 // console.log(winnerId)
                 makeGame(winnerId, playersIds)
                 // renderHistory(winnerId, playersIds)
-                getPlayer(player2Id, player1Id)
+                // getPlayer(player2Id, player1Id)
         } else {
         let player2Rank = player2Obj.rank
        if (player2Rank >= 50) { 
         const playerObj = {
             rank: player2Rank - 50
         }
-            updatePlayer(player2Id, playerObj)
+            updatePlayer(player2Id, playerObj, player1Id, player2Id, 0)
             let li = document.getElementById(`${player2Id}`)
             li.childNodes[3].textContent = playerObj.rank
             
@@ -170,7 +169,7 @@ gameplayForm.addEventListener('submit', async (event) => {
             const playerObj = {
                 rank: 0
             }
-                updatePlayer(player2Id, playerObj)
+                updatePlayer(player2Id, playerObj, player1Id, player2Id, 0)
                 let li = document.getElementById(`${player2Id}`)
                 li.childNodes[3].textContent = playerObj.rank
         }
@@ -205,7 +204,7 @@ const createPlayer = (newPlayerObj) => {
         .then(renderNewPlayer(newPlayerObj))
 }
 
-const updatePlayer = (id, playerObj) => {
+const updatePlayer = (id, playerObj, player1Id, player2Id, statusRun) => {
     fetch(`http://localhost:3000/players/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -214,7 +213,11 @@ const updatePlayer = (id, playerObj) => {
         .then(response => {
             return response.json()
         })
-        // .then(console.log)
+        .then(() => {
+            if (statusRun === 1) {
+                getPlayer(player1Id, player2Id)
+            }
+            })
 }
 
 
@@ -239,10 +242,4 @@ function getRandomNumber(min, max) {
     }
   }
 getPlayers()
-
-
-
-// 1. Create Patch request called updatePlayer(id)
-// 2. eventListener gameSubmit
-// 3. call updatePlayerRank in the eventListener
 
