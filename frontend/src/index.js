@@ -9,7 +9,24 @@ const newPlayerForm = document.getElementById('new-player-form')
 const gameplayForm = document.getElementById('gameplay-form')
 let status = true
 let winnerId = 0;
+const reset = document.getElementById('resets')
 const h1Winner = document.getElementById('h1-winner')
+const bet1 = document.getElementById('bet-amount')
+const bet2 = document.getElementById('bet-amount2')
+let betPlayer1 = null
+let betPlayer2 = null
+
+
+bet1.oninput = function() {
+    bet2.disabled = this.value != "";
+}
+
+bet2.oninput = function() {
+    bet1.disabled = this.value != "";
+}
+
+
+
 // Render Functions
 
 const renderPlayers = (playersObj) => {
@@ -87,15 +104,20 @@ newPlayerForm.addEventListener('submit', (event) => {
     newPlayerForm.reset()
 })
 
-gameplayForm.addEventListener('submit', async (event) => {
+gameplayForm.addEventListener('submit', (event) => {
     event.preventDefault()
     winner = getRandomNumber(1,2)
     const player1Id = player1.value 
     const player2Id = player2.value 
+    betPlayer1 = parseInt(bet1.value)
+    betPlayer2 = parseInt(bet2.value)
     
-    await fetch(`http://localhost:3000/players/${player1Id}`)
+    
+    fetch(`http://localhost:3000/players/${player1Id}`)
     .then(response => response.json())
     .then((player1Obj) => {
+        
+        
         //1st player
         const playersIds = [player1Id, player2Id]
         if (winner == 1){
@@ -103,40 +125,46 @@ gameplayForm.addEventListener('submit', async (event) => {
             const playerObj = {
                 rank: player1Rank + 50
             }  
-                updatePlayer(player1Id, playerObj, player1Id, player2Id, 1)
+            updatePlayer(player1Id, playerObj, player1Id, player2Id, 1)
+            let li = document.getElementById(`${player1Id}`)
+            li.childNodes[3].textContent = playerObj.rank
+            winnerId = player1Id
+            h1Winner.textContent = player1Obj.name + ' Wins!'
+            h1Winner.style.color = 'green'
+            makeGame(winnerId, playersIds)
+            getBet(currentuser, betPlayer1)
+            console.log("bet 1 " + betPlayer1)
+            
+        } else {
+            let player1Rank = player1Obj.rank
+            if (player1Rank >= 50) { 
+                const playerObj = {
+                    rank: player1Rank - 50
+                }
+                updatePlayer(player1Id, playerObj, player1Id, player2Id, 0)
                 let li = document.getElementById(`${player1Id}`)
                 li.childNodes[3].textContent = playerObj.rank
-                winnerId = player1Id
-                h1Winner.textContent = player1Obj.name + ' Wins!'
-                h1Winner.style.color = 'green'
-                // console.log(winnerId) 
-                makeGame(winnerId, playersIds)
-                // renderHistory(winnerId, playersIds)
-                          
+                betPlayer1 = 0 - betPlayer1
+                getBet(currentuser, betPlayer1)
+                console.log("bet 1 " + betPlayer1)
+                
             } else {
-                let player1Rank = player1Obj.rank
-                if (player1Rank >= 50) { 
-                    const playerObj = {
-                        rank: player1Rank - 50
-                    }
-                        updatePlayer(player1Id, playerObj, player1Id, player2Id, 0)
-                        let li = document.getElementById(`${player1Id}`)
-                        li.childNodes[3].textContent = playerObj.rank
-                        
-                    } else {
-                        const playerObj = {
-                            rank: 0
-                        }
-                            updatePlayer(player1Id, playerObj, player1Id, player2Id, 0)
-                            let li = document.getElementById(`${player1Id}`)
-                            li.childNodes[3].textContent = playerObj.rank
-                    }
-                        }
+                const playerObj = {
+                    rank: 0
+                }
+                updatePlayer(player1Id, playerObj, player1Id, player2Id, 0)
+                let li = document.getElementById(`${player1Id}`)
+                li.childNodes[3].textContent = playerObj.rank
+                betPlayer1 = 0 - betPlayer1
+                getBet(currentuser, betPlayer1)
+                console.log("bet 1 " + betPlayer1)
+            }
+        }
         
-        }) 
-        
-        //2nd
-    await fetch(`http://localhost:3000/players/${player2Id}`)
+    }) 
+    
+    //2nd
+    fetch(`http://localhost:3000/players/${player2Id}`)
     .then(response => response.json())
     .then((player2Obj) => {
         const playersIds = [player1Id, player2Id]
@@ -145,42 +173,58 @@ gameplayForm.addEventListener('submit', async (event) => {
             const playerObj = {
                 rank: player2Rank + 50
             }  
-                updatePlayer(player2Id, playerObj, player1Id, player2Id, 1)
-                let li = document.getElementById(`${player2Id}`)
-                li.childNodes[3].textContent = playerObj.rank
-                winnerId = player2Id
-                h1Winner.textContent = player2Obj.name + ' Wins!'
-                h1Winner.style.color = 'green'
-                // console.log(winnerId)
-                makeGame(winnerId, playersIds)
-                // renderHistory(winnerId, playersIds)
-                // getPlayer(player2Id, player1Id)
-        } else {
-        let player2Rank = player2Obj.rank
-       if (player2Rank >= 50) { 
-        const playerObj = {
-            rank: player2Rank - 50
-        }
-            updatePlayer(player2Id, playerObj, player1Id, player2Id, 0)
+            updatePlayer(player2Id, playerObj, player2Id, player1Id, 1)
             let li = document.getElementById(`${player2Id}`)
             li.childNodes[3].textContent = playerObj.rank
-            
+            winnerId = player2Id
+            h1Winner.textContent = player2Obj.name + ' Wins!'
+            h1Winner.style.color = 'green'
+            // console.log(winnerId)
+            makeGame(winnerId, playersIds)
+            getBet(currentuser, betPlayer2)
+            console.log("bet 2 " + betPlayer2)
         } else {
-            const playerObj = {
-                rank: 0
-            }
+            let player2Rank = player2Obj.rank
+            if (player2Rank >= 50) { 
+                const playerObj = {
+                    rank: player2Rank - 50
+                }
                 updatePlayer(player2Id, playerObj, player1Id, player2Id, 0)
                 let li = document.getElementById(`${player2Id}`)
                 li.childNodes[3].textContent = playerObj.rank
-        }
-    }})
-    
+                betPlayer2 = 0 - betPlayer2
+                getBet(currentuser, betPlayer2)
+                console.log("bet 2 " + betPlayer2)
+                
+                
+            } else {
+                const playerObj = {
+                    rank: 0
+                }
+                updatePlayer(player2Id, playerObj, player1Id, player2Id, 0)
+                let li = document.getElementById(`${player2Id}`)
+                li.childNodes[3].textContent = playerObj.rank
+                betPlayer2 = 0 - betPlayer2
+                getBet(currentuser, betPlayer2)
+                console.log("bet 2 " + betPlayer2)
+                
+            }
+        }})
+        
         // clearOptions('choose-player-1')
         // clearOptions('choose-player-2')
         // clearLeaderboard('leader-board-list')
         // status = false
         // getPlayers()
         gameplayForm.reset()
+        bet1.disabled = false
+        bet2.disabled = false
+        
+    })
+
+reset.addEventListener("reset", (event) => {
+    event.preventDefault()
+    gameplayForm.reset()
     })
 
 // Fetch Functions

@@ -2,7 +2,7 @@ const username = document.getElementById('username')
 const existingUsers = document.getElementById('existing-users')
 const newUser = document.getElementById('new-user')
 const coins = document.getElementById('coins')
-// let currentUser = null
+let currentuser = null
 
 // Renders
 const renderUsers = (usersObj) => {
@@ -79,7 +79,7 @@ const getUser = (id) => {
         return response.json()
     })
     .then(userObj => {
-        // currentUser = userObj
+        currentuser = userObj.id
         coins.value = userObj.coins
         username.textContent = 'Welcome ' + userObj.username + '!'
     })

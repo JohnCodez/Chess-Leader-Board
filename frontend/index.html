@@ -8,6 +8,7 @@
     <script src="./src/index.js" defer></script>
     <script src="./src/gametables.js" defer></script>
     <script src="./src/user.js" defer></script>
+    <script src="./src/coins.js" defer></script>
 </head>
 <body>
     <header>
@@ -41,14 +42,15 @@
                 <select name="Player 1" id="choose-player-1" placeholder="Player 1">
                     <option value="" disabled selected>Select Player 1</option>
                 </select>
-                <!-- <h3 id="vs">vs</h3> -->
-                <!-- <label for="Player 2">Player 2</label> -->
+                <button id="resets" type='reset'>⟲</button>
                 <select name="Player 2" id="choose-player-2">
                     <option value="" disabled selected>Select Player 2</option>
                 </select>
             </div>
             <div id="div-start-button">
-                <button id="start-button" type='submit'>Start!</button>
+                <input id="bet-amount" type='number' placeholder="Bet Amount">
+                <button id="start-button" type='submit'>FIGHT!</button>
+                <input id="bet-amount2" type='number' placeholder="Bet Amount">
             </div>  
         </form>
     </main>
@@ -59,7 +61,6 @@
             <input id="image" type='text' placeholder="Image URL">
             <button type='submit'>Create Player</button>
         </form>
-
     </nav>
     <footer id="history">
         <h3>Recent Games</h3>

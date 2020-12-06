@@ -68,6 +68,11 @@ header {
     padding: 30px;
 }
 
+#resets {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
 #player-selects {
     display: flex;
     align-items: center;
@@ -80,8 +85,15 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 30px;
+    padding: 30px; 
+    
 }
+
+#bet-amount, #bet-amount2, #start-button {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
 
 #gameplay-form img {
     height: 200px;
