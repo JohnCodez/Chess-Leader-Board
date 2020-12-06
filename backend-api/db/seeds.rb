@@ -13,7 +13,7 @@ User.destroy_all
 
 bobby = Player.create(name: "Bobby Fischer", rank: 800, image_url: "https://cdn.britannica.com/55/11855-050-82C30B02/Bobby-Fischer-1971.jpg")
 magnus = Player.create(name: "Magnus Carlsen", rank: 900, image_url: "https://i.guim.co.uk/img/media/80c910214dbf4de7b660b09829b5348eefdb1d18/0_182_5472_3283/master/5472.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=69297966046d1f502d29e76ba78934ac")
-beth = Player.create(name: "Beth Harmon", rank: 1100, image_url: "https://www.indiewire.com/wp-content/uploads/2020/08/preview.jpg?w=780")
+beth = Player.create(name: "Beth Harmon", rank: 1100, image_url: "https://static.independent.co.uk/2020/11/11/10/Queens%20Gambit.jpg")
 
 game1 = Game.create(winner_id: bobby.id)
 game2 = Game.create(winner_id: magnus.id)
