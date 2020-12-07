@@ -33,6 +33,22 @@ bet2.oninput = function() {
 
 const renderPlayers = (playersObj) => {
     
+    const placeholder = document.createElement('option')
+    placeholder.innerText = `Select Player 1`
+    placeholder.value = ""
+    placeholder.disabled = true
+
+    player1.append(placeholder)
+    player1.selectedIndex = 0
+    
+    const placeholder2 = document.createElement('option')
+    placeholder2.innerText = `Select Player 2`
+    placeholder2.value = ""
+    placeholder2.disabled = true
+    
+    player2.append(placeholder2)
+    player2.selectedIndex = 0
+
     playersObj.forEach(player => {
         const li = document.createElement("li")
         li.innerHTML = `         
@@ -44,6 +60,8 @@ const renderPlayers = (playersObj) => {
         if (status == true) {
             leaderBoardList.append(li)
         }
+
+
         status = true
         const option1 = document.createElement("option")
         option1.value = player.id
@@ -75,41 +93,7 @@ const renderPlayers = (playersObj) => {
     })
     
 }
-
-// const renderNewPlayer = (newPlayerObj) => {
-//     const li = document.createElement("li")
-//     li.innerHTML = `         
-//     <img src=${newPlayerObj.image_url} />
-//     ${newPlayerObj.name} (${newPlayerObj.rank})
-//     `
-//     li.id = newPlayerObj.id
-    
-//     leaderBoardList.append(li)
-    
-//     const option1 = document.createElement("option")
-//     option1.value = newPlayerObj.id
-//     option1.dataset.id = newPlayerObj.rank
-    
-//     option1.textContent = `${newPlayerObj.name}`;
-//     player1.append(option1)
-    
-//     const option2 = document.createElement("option")
-//     option2.value = newPlayerObj.id
-//     option2.dataset.id = newPlayerObj.rank
-//     option2.textContent = `${newPlayerObj.name}`;
-//     player2.append(option2)
-    
-//     main.addEventListener('change', (event) => {
-//         let img = newPlayerObj.image_url
-        
-//         if (event.target.id === 'choose-player-1'){
-//             player1Img.src = img
-//         } else if (event.target.id === 'choose-player-2') {
-//             player2Img.src = img
-//         }
-//     })
-// }         
-                
+       
 // Event Handlers
 
 newPlayerForm.addEventListener('submit', (event) => {
@@ -159,7 +143,11 @@ gameplayForm.addEventListener('submit', (event) => {
         map.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBG9caRGRSzZCc1Wvfh5bvl-FoS0PNlWxY&q=${gameLocation.value}`
         makeGame(winnerId, playersIds, gameLocation)
         getBet(currentuser, betPlayer1)
-        
+
+        setTimeout(() => {
+            winnerColor = document.getElementById(`${player1Id}`)
+            winnerColor.style.color = 'green';
+        }, 1000)
     } else {
         let player1Rank = player1Obj.rank
         if (player1Rank >= 50) { 
@@ -172,6 +160,10 @@ gameplayForm.addEventListener('submit', (event) => {
             betPlayer1 = 0 - betPlayer1
             getBet(currentuser, betPlayer1)
             
+            setTimeout(() => {
+                loserColor = document.getElementById(`${player1Id}`)
+                loserColor.style.color = 'red';
+            }, 1000)
         } else {
             const playerObj = {
                 rank: 0
@@ -181,6 +173,10 @@ gameplayForm.addEventListener('submit', (event) => {
             li.childNodes[3].textContent = playerObj.rank
             betPlayer1 = 0 - betPlayer1
             getBet(currentuser, betPlayer1)
+            setTimeout(() => {
+                loserColor = document.getElementById(`${player1Id}`)
+                loserColor.style.color = 'red';
+            }, 1000)
         }
     }
     
@@ -206,6 +202,11 @@ fetch(`http://localhost:3000/players/${player2Id}`)
         map.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBG9caRGRSzZCc1Wvfh5bvl-FoS0PNlWxY&q=${gameLocation.value}`
         makeGame(winnerId, playersIds, gameLocation)
         getBet(currentuser, betPlayer2)
+
+        setTimeout(() => {
+            winnerColor = document.getElementById(`${player2Id}`)
+            winnerColor.style.color = 'green';
+        }, 1000)
     } else {
         let player2Rank = player2Obj.rank
         if (player2Rank >= 50) { 
@@ -217,6 +218,11 @@ fetch(`http://localhost:3000/players/${player2Id}`)
             li.childNodes[3].textContent = playerObj.rank
             betPlayer2 = 0 - betPlayer2
             getBet(currentuser, betPlayer2)
+
+            setTimeout(() => {
+                loserColor = document.getElementById(`${player2Id}`)
+                loserColor.style.color = 'red';
+            }, 1000)
             
             
         } else {
@@ -228,7 +234,12 @@ fetch(`http://localhost:3000/players/${player2Id}`)
             li.childNodes[3].textContent = playerObj.rank
             betPlayer2 = 0 - betPlayer2
             getBet(currentuser, betPlayer2)
-            
+
+            setTimeout(() => {
+                loserColor = document.getElementById(`${player2Id}`)
+                loserColor.style.color = 'red';
+            }, 1000)
+
         }
     }})
     
@@ -314,6 +325,15 @@ function getRandomNumber(min, max) {
         ol.children[i] = null;
     }
   }
+
+  gameplayForm.addEventListener('reset', (event) => {
+      event.preventDefault()
+      player1.selectedIndex = 0
+      player2.selectedIndex = 0
+  })
+
+
+
 getPlayers()
 
 // while (player1.firstElementChild) {

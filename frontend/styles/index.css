@@ -156,6 +156,21 @@ nav {
     border-radius: 10px;
 }
 
+#new-player-form {
+    margin-left: 26%;
+    padding-top: 15px;
+}
+#new-player-form button{
+    margin-left: 10%;
+    border-radius: 5px;
+    font-size: 18px;
+}
+#new-player-form input{
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+
 footer {
     grid-area: footer;
     border: 2px solid rgb(0, 0, 0);
@@ -173,6 +188,7 @@ footer img {
     height: 50px;
     width: 50px;
     border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
 }
 
 #p1 {
@@ -216,11 +232,13 @@ footer img {
 #username-new-name {
     height: 25%;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 #existing-users {
     height: 25%;
     border-radius: 5px;
+    font-size: 18px
 }
 
 #reset-coins {

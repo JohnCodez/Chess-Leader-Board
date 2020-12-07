@@ -9,13 +9,11 @@ class GameplayersController < ApplicationController
         render json: @gameplayer
     end
 
-    def new
-        @gameplayer = Gameplayer.new
-        render json: @gameplayer
-    end
+    
 
     def create
         @gameplayer = Gameplayer.create(gameplayer_params)
+        
         render json: @gameplayer
     end
 
