@@ -44,7 +44,7 @@ existingUsers.addEventListener("change", (event) => {
     event.preventDefault()
 
     getUser(event.target.value)
-    
+    currentUser = event.target.value   
     
 })
 

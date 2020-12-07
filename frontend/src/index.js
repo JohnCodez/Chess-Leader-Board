@@ -132,6 +132,9 @@ const renderNewPlayer = (newPlayerObj) => {
         const player2Id = player2.value 
         betPlayer1 = parseInt(bet1.value)
         betPlayer2 = parseInt(bet2.value)
+        h1Winner.textContent = "... BATTLING ..."
+        h1Winner.style.color = 'red';
+        setTimeout (function() {
         
         
         fetch(`http://localhost:3000/players/${player1Id}`)
@@ -232,6 +235,7 @@ const renderNewPlayer = (newPlayerObj) => {
         bet1.disabled = false
         bet2.disabled = false
         
+    }, 3000)
     })
 
 reset.addEventListener("reset", (event) => {

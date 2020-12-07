@@ -9,7 +9,6 @@
     <script src="./src/gametables.js" defer></script>
     <script src="./src/user.js" defer></script>
     <script src="./src/coins.js" defer></script>
-    <script src="./src/map.js" defer></script>
 </head>
 <body>
     <header>
@@ -17,6 +16,7 @@
             <h2 id="username">Welcome To Chess Wars!</h2>
             <label for="coins">Coins:</label>
             <input id="coins" type='number' value="0" readonly>
+            <button id="reset-coins" type='submit'>⟲</button>
         </form>
         <h1><img id="logo" src="https://uxwing.com/wp-content/themes/uxwing/download/24-sport-and-awards/chess-knight.png"></h1>
         <form id="new-user">
@@ -36,6 +36,8 @@
             </div>
             <div id=game-images>
                 <img id="player-1-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Flag_of_None_%28square%29.svg/120px-Flag_of_None_%28square%29.svg.png" alt="player-1-image"> 
+                <iframe id="map" width="250" height="250" frameborder="0" style="border:0" src="" allowfullscreen>
+                </iframe>
                 <img id="player-2-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Flag_of_None_%28square%29.svg/120px-Flag_of_None_%28square%29.svg.png" alt="player-2-image"> 
             </div>
             <!-- <label for="Player 1">Player 1</label> -->
@@ -62,8 +64,6 @@
                 
                 <input id="bet-amount2" type='number' placeholder="Bet Amount">
             </div>  
-            <iframe id="map" width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBG9caRGRSzZCc1Wvfh5bvl-FoS0PNlWxY&q=Space+Needle,Seattle+WA" allowfullscreen>
-            </iframe>
         </form>
     </main>
     <nav id="leaderboard">

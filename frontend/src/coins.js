@@ -1,3 +1,5 @@
+const coinReset = document.getElementById('user-coins')
+let currentUser; 
 
 const getBet = (id, bet) => {
     fetch(`http://localhost:3000/users/${id}`)
@@ -40,3 +42,11 @@ const updateBet = (id, updatedBet) => {
             return response.json()
         })
 }
+
+coinReset.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const newUpdatedBet = {coins: 20}
+    console.log(newUpdatedBet)
+    updateBet(currentUser, newUpdatedBet)
+    coins.value = 20
+})

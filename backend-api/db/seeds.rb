@@ -20,7 +20,8 @@ patricia = Player.create(name: "Patricia Arnendo", rank: 1900, image_url: "/User
 brian = Player.create(name: "Brian Sahota", rank: 2200, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/brian.jpeg")
 julia = Player.create(name: "Julia Zolotarev", rank: 2799, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/julia.png")
 ninjaxmas = Player.create(name: "Xmas Ninja", rank: 1700, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/NinjaXmas.png")
-jomarie = Player.create(name: "Jomarie Polanco", rank: 2350, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/jomarie.png")
+jomarie = Player.create(name: "Jomarie Polanco", rank: 2350, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/jomarie.jpg")
+nami = Player.create(name: "Nami Niu", rank: 2050, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/doggo.jpg")
 
 game1 = Game.create(winner_id: bobby.id, location: "Washington Square, New York, NY 10012" )
 game2 = Game.create(winner_id: magnus.id, location: "Center Drive, New York, NY 10019" )
