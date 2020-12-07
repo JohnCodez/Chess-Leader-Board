@@ -9,6 +9,7 @@
     <script src="./src/gametables.js" defer></script>
     <script src="./src/user.js" defer></script>
     <script src="./src/coins.js" defer></script>
+    <script src="./src/map.js" defer></script>
 </head>
 <body>
     <header>
@@ -48,10 +49,21 @@
                 </select>
             </div>
             <div id="div-start-button">
-                <input id="bet-amount" type='number' placeholder="Bet Amount">
                 <button id="start-button" type='submit'>FIGHT!</button>
+            </div>
+            <div id="location-div">
+                <input id="bet-amount" type='number' placeholder="Bet Amount">
+                <select name="Location" id="choose-location" placeholder="Location">
+                    <option value="" disabled selected>Select Location</option>
+                    <option value="Washington+Square,New+York,NY+10012">Washington Square Park</option>
+                    <option value="Center+Drive,New+York,NY+10019">Central Park</option>
+                    <option value="Bryant+Park,W+40th+St,New+York,NY+10018">Bryant Park</option>
+                </select>
+                
                 <input id="bet-amount2" type='number' placeholder="Bet Amount">
             </div>  
+            <iframe id="map" width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBG9caRGRSzZCc1Wvfh5bvl-FoS0PNlWxY&q=Space+Needle,Seattle+WA" allowfullscreen>
+            </iframe>
         </form>
     </main>
     <nav id="leaderboard">

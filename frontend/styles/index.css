@@ -1,6 +1,6 @@
 body {
-margin: 0;
-padding: 0;
+margin: 10px;
+padding: 10px;
 display: grid;
 grid-template-areas:
     "header header"
@@ -17,6 +17,7 @@ background-size: 3000px 100px;
 main {
     background-image: url("https://ak.picdn.net/shutterstock/videos/13430837/thumb/1.jpg");
     background-size: 1100px;
+
         
 }
 
@@ -26,6 +27,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 10px;
+    padding: 10px;
+    
         
 }
 
@@ -34,7 +38,7 @@ header {
     margin-right: 100px; */
     /* display: block; */
     position: absolute;
-    margin: -1.5% 50%; 
+    margin: -2% 50%; 
     left: 0;
     right: 0;
     
@@ -85,8 +89,22 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    
+    
+}
+
+#location-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     padding: 30px; 
     
+    
+}
+
+#choose-location {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
 }
 
 #bet-amount, #bet-amount2, #start-button {
@@ -99,6 +117,7 @@ header {
     height: 200px;
     width: 200px;
     border: 4px solid rgb(0, 0, 0);
+    clip:rect(0px,60px,200px,0px);
     
 }
 
@@ -111,7 +130,7 @@ header {
 nav {
     grid-area: nav;
     border: 2px solid rgb(0, 0, 0);
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 900;
     background-image: url('https://media.istockphoto.com/photos/cork-board-background-picture-id848498476?k=6&m=848498476&s=612x612&w=0&h=Ij7Dl93T9Oii8ITqA3jC0qZnJeEGjKLLIRduzr45-TA=');
     background-repeat: no-repeat;
@@ -164,7 +183,7 @@ footer img {
 }
 
 #coins {
-    width: 20%;
+    width: 30%;
     padding-left:10px;
     text-align:center;
 }
