@@ -1,8 +1,3 @@
-const historyUl = document.getElementById('history-list')
-const historyUlP = document.getElementById('previous-history-list')
-
-
-
 function makeGame(winnerId, playersIds, gameLocation){
     
     let gameObj = {
@@ -25,6 +20,7 @@ function makeGame(winnerId, playersIds, gameLocation){
     
     createGame(gameObj)
 }
+
 function fetchGames(playersIds){
 
     fetch('http://localhost:3000/games')

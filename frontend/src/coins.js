@@ -1,6 +1,3 @@
-const coinReset = document.getElementById('user-coins')
-let currentUser; 
-
 const getBet = (id, bet) => {
     fetch(`http://localhost:3000/users/${id}`)
     .then(response => response.json())
