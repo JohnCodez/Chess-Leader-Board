@@ -14,15 +14,7 @@ User.destroy_all
 bobby = Player.create(name: "Bobby Fischer", rank: 2785, image_url: "https://cdn.britannica.com/55/11855-050-82C30B02/Bobby-Fischer-1971.jpg")
 magnus = Player.create(name: "Magnus Carlsen", rank: 2900, image_url: "https://i.guim.co.uk/img/media/80c910214dbf4de7b660b09829b5348eefdb1d18/0_182_5472_3283/master/5472.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=69297966046d1f502d29e76ba78934ac")
 beth = Player.create(name: "Beth Harmon", rank: 2800, image_url: "https://static.independent.co.uk/2020/11/11/10/Queens%20Gambit.jpg")
-steven = Player.create(name: "Steven Wu", rank: 2400, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/steven.jpg")
-becca = Player.create(name: "Rebecca Robbins", rank: 2500, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/becca.jpg")
-patricia = Player.create(name: "Patricia Arnendo", rank: 1900, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/Patricia.png")
-brian = Player.create(name: "Brian Sahota", rank: 2200, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/brian.jpeg")
-julia = Player.create(name: "Julia Zolotarev", rank: 2799, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/julia.png")
-ninjaxmas = Player.create(name: "Xmas Ninja", rank: 1700, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/NinjaXmas.png")
-jomarie = Player.create(name: "Jomarie Polanco", rank: 2350, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/jomarie.jpg")
-nami = Player.create(name: "Nami Niu", rank: 2050, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/doggo.jpg")
-victor = Player.create(name: "Victor Torres", rank: 1850, image_url: "/Users/johnex/Desktop/Chess-Leader-Board/backend-api/db/photos/victor.png")
+
 
 game1 = Game.create(winner_id: bobby.id, location: "Washington Square, New York, NY 10012" )
 game2 = Game.create(winner_id: magnus.id, location: "Center Drive, New York, NY 10019" )
