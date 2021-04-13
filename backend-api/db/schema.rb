@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_12_06_004340) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "adminpack"
   enable_extension "plpgsql"
 
   create_table "gameplayers", force: :cascade do |t|
@@ -34,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_004340) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.integer "rank" 
+    t.integer "rank"
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
