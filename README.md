@@ -1,0 +1,1 @@
+Fun chess inspired game in which you can put two players against each other and bet fake currency
